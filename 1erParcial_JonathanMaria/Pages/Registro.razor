@@ -1,0 +1,36 @@
+﻿@page "/"
+@using _1erParcial_JonathanMaria.Controllers;
+@using _1erParcial_JonathanMaria.Models;
+
+
+@code{
+    Inscripciones Inscripcion = new Inscripciones();
+    string Mensaje = string.Empty;
+
+    private void Guardar()
+    {
+
+        InscripcionesController inscripcionesController = new InscripcionesController();
+
+        try
+        {
+            if(inscripcionesController.Insertar(Inscripcion))
+            {
+
+                Mensaje = "La inscripcion se guardo de manera exitosa!...";
+            }
+            else
+            {
+
+                Mensaje = "La inscripcion no se guardo de manera exitosa!...";
+            }
+        }
+        catch(Exception)
+        {
+
+            throw;
+        }
+
+    }
+
+}
