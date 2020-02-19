@@ -1,4 +1,4 @@
-﻿ausing Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace _1erParcial_JonathanMaria.Migrations
 {
