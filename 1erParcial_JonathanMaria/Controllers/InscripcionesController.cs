@@ -61,5 +61,32 @@ namespace _1erParcial_JonathanMaria.Controllers
 
             return paso;
         }
+
+        public static bool Eliminar(int Id)
+        {
+
+            bool paso = false;
+            Contexto contexto = new Contexto();
+            Inscripciones Inscripcion = contexto.Inscripciones.Find(Id);
+
+            try
+            {
+
+                contexto.Entry(Inscripcion).State = EntityState.Deleted;
+                paso = contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+
+                contexto.Dispose();
+            }
+
+            return paso;
+        }
     }
 }
