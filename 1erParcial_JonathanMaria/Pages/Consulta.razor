@@ -1,0 +1,44 @@
+﻿@page "/Consulta"
+@using _1erParcial_JonathanMaria.Controllers;
+@using _1erParcial_JonathanMaria.Models;
+
+<div class="container text-center">
+    <h3>Consulta de inscripciones</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Semestre</th>
+                <th>Limite</th>
+                <th>Tomados</th>
+                <th>Disponibles</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var item in ListadoInscripciones)
+            {
+            <tr>
+                <th>@item.InscripcionId</th>
+                <th>@item.Semestre</th>
+                <th>@item.Limite</th>
+                <th>@item.Tomados</th>
+                <th>@item.Disponibles</th>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+@code {
+    
+    public List<Inscripciones> ListadoInscripciones;
+
+    protected override void OnInitialized()
+    {
+        InscripcionesController inscripcionesController = new InscripcionesController();
+        ListadoInscripciones = inscripcionesController.GetList(e => true);
+    }
+}

@@ -144,7 +144,7 @@ namespace _1erParcial_JonathanMaria.Controllers
             try
             {
 
-                contexto.Inscripciones.Where(expression).ToList();
+                ListadoInscripciones = contexto.Inscripciones.Where(expression).ToList();
             }
             catch (Exception)
             {
