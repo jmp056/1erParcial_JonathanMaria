@@ -62,7 +62,7 @@ namespace _1erParcial_JonathanMaria.Controllers
             return paso;
         }
 
-        public static bool Eliminar(int Id)
+        public bool Eliminar(int Id)
         {
 
             bool paso = false;
@@ -87,6 +87,31 @@ namespace _1erParcial_JonathanMaria.Controllers
             }
 
             return paso;
+        }
+
+        public Inscripciones Buscar(int Id)
+        {
+
+            Contexto contexto = new Contexto();
+            Inscripciones Inscripcion = new Inscripciones();
+
+            try
+            {
+
+                Inscripcion = contexto.Inscripciones.Find(Id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+
+                contexto.Dispose();
+            }
+
+            return Inscripcion;
         }
     }
 }
