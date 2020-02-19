@@ -33,4 +33,33 @@
 
     }
 
+    private void Buscar()
+    {
+
+        InscripcionesController inscripcionesController = new InscripcionesController();
+
+        try
+        {
+            Inscripciones InscripcionTemporal = new Inscripciones();
+            InscripcionTemporal = inscripcionesController.Buscar(Inscripcion.InscripcionId);
+
+            if(InscripcionTemporal != null)
+            {
+
+                Mensaje = "Inscripcion encontrada de manera exitosa!...";
+            }
+            else
+            {
+
+                Mensaje = "La inscripcion no pudo ser encontrada!...";
+            }
+        }
+        catch(Exception)
+        {
+
+            throw;
+        }
+
+    }
+
 }
