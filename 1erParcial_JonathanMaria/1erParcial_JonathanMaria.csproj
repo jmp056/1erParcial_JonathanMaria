@@ -7,6 +7,9 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Databse\" />
+    <Folder Include="Models\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
