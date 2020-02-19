@@ -2,6 +2,62 @@
 @using _1erParcial_JonathanMaria.Controllers;
 @using _1erParcial_JonathanMaria.Models;
 
+<div class="container text-center">
+    <EditForm Model="Inscripcion" OnValidSubmit="Guardar">
+        <DataAnnotationsValidator />
+
+        <h1>Registro de Inscripciones</h1>
+
+        <div class="form-group">
+            <div class="form-inline">
+                <label for="InscripcionId">Codigo de la Inscripcion</label>
+                <InputNumber @bind-Value="Inscripcion.InscripcionId" class="form-control" />
+                <button type="button" class="btn btn-outline-dark" @onclick="Buscar">Buscar</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-inline">
+                <label for="Semestre">Semestre</label>
+                <InputText @bind-Value="Inscripcion.Semestre" class="form-control" />
+                <ValidationMessage For="@(() => Inscripcion.Semestre)" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-inline">
+                <label for="Limite">Limite de creditos</label>
+                <InputNumber @bind-Value="Inscripcion.Limite" class="form-control" />
+                <ValidationMessage For="@(() => Inscripcion.Limite)" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-inline">
+                <label for="Tomados">Creditos tomados</label>
+                <InputNumber @bind-Value="Inscripcion.Tomados" class="form-control" />
+                <ValidationMessage For="@(() => Inscripcion.Tomados)" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-inline">
+                <label for="Disponibles">Creditos disponibles</label>
+                <InputNumber @bind-Value="Inscripcion.Disponibles" class="form-control" disabled />
+                <ValidationMessage For="@(() => Inscripcion.Disponibles)" />
+            </div>
+        </div>
+            
+        <h3>@Mensaje</h3>
+
+        <div>
+            <button type="button" class="btn btn-outline-primary" @onclick="Limpiar">Limpiar</button>
+            <button type="submit" class="btn btn-outline-success">Guardar</button>
+            <button type="button" class="btn btn-outline-danger" @onclick="Eliminar">Eliminar</button>
+        </div>
+        <ValidationSummary />
+    </EditForm>
+</div>
 
 @code{
     Inscripciones Inscripcion = new Inscripciones();
@@ -45,7 +101,7 @@
 
             if(InscripcionTemporal != null)
             {
-
+                Inscripcion = InscripcionTemporal;
                 Mensaje = "Inscripcion encontrada de manera exitosa!...";
             }
             else
