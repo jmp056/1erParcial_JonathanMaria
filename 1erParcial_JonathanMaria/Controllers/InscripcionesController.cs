@@ -10,6 +10,26 @@ namespace _1erParcial_JonathanMaria.Controllers
 {
     public class InscripcionesController
     {
+
+        public bool Insertar(Inscripciones Inscripcion)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+
+            if(Inscripcion.InscripcionId == 0)
+            {
+
+                paso = Guardar(Inscripcion);
+            }
+            else
+            {
+
+                paso = Modificar(Inscripcion);
+            }
+
+            return paso;
+        }
+
         public static bool Guardar(Inscripciones Inscripcion)
         {
 
