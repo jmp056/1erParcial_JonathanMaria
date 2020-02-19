@@ -27,7 +27,7 @@
         <div class="form-group">
             <div class="form-inline">
                 <label for="Limite">Limite de creditos</label>
-                <InputNumber @bind-Value="Inscripcion.Limite" class="form-control" />
+                <InputNumber @bind-Value="Inscripcion.Limite" class="form-control" @onfocusin="Calcular" @onfocusout="Calcular" @oninput="Calcular"/>
                 <ValidationMessage For="@(() => Inscripcion.Limite)" />
             </div>
         </div>
@@ -35,7 +35,7 @@
         <div class="form-group">
             <div class="form-inline">
                 <label for="Tomados">Creditos tomados</label>
-                <InputNumber @bind-Value="Inscripcion.Tomados" class="form-control" />
+                <InputNumber @bind-Value="Inscripcion.Tomados" class="form-control"  @onfocusin="Calcular" @onfocusout="Calcular" @oninput="Calcular"/>
                 <ValidationMessage For="@(() => Inscripcion.Tomados)" />
             </div>
         </div>
@@ -160,6 +160,11 @@
 
         Inscripcion = new Inscripciones();
         Mensaje = string.Empty;
+    }
+
+    private void Calcular()
+    {
+        Inscripcion.Disponibles = Inscripcion.Limite - Inscripcion.Tomados;
     }
 
 }
