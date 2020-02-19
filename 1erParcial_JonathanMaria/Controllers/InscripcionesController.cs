@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace _1erParcial_JonathanMaria.Controllers
@@ -133,5 +134,31 @@ namespace _1erParcial_JonathanMaria.Controllers
 
             return Inscripcion;
         }
+
+        public List<Inscripciones> GetList(Expression<Func<Inscripciones, bool>> expression)
+        {
+
+            Contexto contexto = new Contexto();
+            List<Inscripciones> ListadoInscripciones = new List<Inscripciones>();
+
+            try
+            {
+
+                contexto.Inscripciones.Where(expression).ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+
+                contexto.Dispose();
+            }
+
+            return ListadoInscripciones;
+        }
+
     }
 }
