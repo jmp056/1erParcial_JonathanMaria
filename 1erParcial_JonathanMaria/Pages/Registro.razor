@@ -62,4 +62,41 @@
 
     }
 
+    private void Eliminar()
+    {
+
+        InscripcionesController inscripcionesController = new InscripcionesController();
+
+        try
+        {
+            Inscripciones InscripcionTemporal = new Inscripciones();
+            InscripcionTemporal = inscripcionesController.Buscar(Inscripcion.InscripcionId);
+
+            if(InscripcionTemporal == null)
+            {
+
+                Mensaje = "No se puede eliminar una inscripcion que no existe!...";
+            }
+            else
+            {
+
+                if (inscripcionesController.Eliminar(Inscripcion.InscripcionId))
+                {
+                    Mensaje = "La inscripcion fue eliminada de manera exitosa";
+                }
+                else
+                {
+
+                    Mensaje = "La inscripcion no pudo ser eliminada de manera exitosa";
+                }
+            }
+        }
+        catch(Exception)
+        {
+
+            throw;
+        }
+
+    }
+
 }
